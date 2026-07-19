@@ -10,14 +10,33 @@ A super-minimalist theme for [Ghost](https://ghost.org), built for quiet, readab
 
 ## Install
 
-1. Zip the theme (already done for you — see `minima.zip`), or run:
-   ```
-   zip -r minima.zip . -x ".git/*" "*.DS_Store" "minima.zip"
-   ```
+1. Download `minima.zip` from the [latest release](https://github.com/jvaleski/one-valeski-theme/releases/latest).
 2. In Ghost admin (`https://jvaleski.ghost.io/ghost`) go to **Settings → Design & branding → Change theme → Upload theme**.
 3. Upload `minima.zip`, then click **Activate**.
 
 Your existing Casper theme stays installed, so you can switch back anytime from the same screen.
+
+## Releasing a new version
+
+Releases are automated. To ship changes:
+
+```
+# edit files, then bump the version in package.json
+git commit -am "Describe the change"
+git push
+git tag v1.0.1        # match the version in package.json
+git push origin v1.0.1
+```
+
+Pushing the tag triggers `.github/workflows/release.yml`, which validates the
+theme with `gscan`, builds `minima.zip`, and attaches it to a matching GitHub
+Release. Every push to `main` is also validated by `.github/workflows/validate.yml`.
+
+To build the zip locally instead:
+
+```
+zip -r minima.zip . -x ".git/*" ".github/*" "*.zip" "*.DS_Store" "node_modules/*"
+```
 
 ## Customizing
 

@@ -1,0 +1,44 @@
+name: Release theme
+
+# Build minima.zip and attach it to a GitHub Release whenever a version
+# tag (e.g. v1.0.1) is pushed.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate theme with gscan
+        run: npx --yes gscan@latest --fatal --verbose .
+
+      - name: Build minima.zip
+        run: |
+          zip -r minima.zip . \
+            -x ".git/*" ".github/*" "*.zip" "*.DS_Store" "node_modules/*"
+
+      - name: Create / update release with the theme zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" minima.zip --clobber
+          else
+            gh release create "$TAG" minima.zip \
+              --title "Minima $TAG" \
+              --generate-notes
+          fi

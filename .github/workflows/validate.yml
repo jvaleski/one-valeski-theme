@@ -1,0 +1,23 @@
+name: Validate theme
+
+# Run gscan on every push and PR so theme errors surface before you tag a release.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  gscan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate theme with gscan
+        run: npx --yes gscan@latest --fatal --verbose .
