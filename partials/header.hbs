@@ -1,0 +1,34 @@
+<header class="site-header">
+    <div class="site-header-inner">
+        <div class="site-brand">
+            {{#if @site.logo}}
+                <a class="site-logo" href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a>
+            {{else}}
+                <a class="site-title" href="{{@site.url}}">{{@site.title}}</a>
+            {{/if}}
+        </div>
+
+        <nav class="site-nav" aria-label="Main navigation">
+            {{navigation}}
+
+            <button class="nav-search" aria-label="{{t "Search this site"}}" data-ghost-search>
+                {{> "icons/search"}}
+            </button>
+
+            {{#if @site.members_enabled}}
+                {{#unless @member}}
+                    <a class="nav-link nav-signin" href="#/portal/signin" data-portal="signin">{{t "Sign in"}}</a>
+                    <a class="nav-btn nav-subscribe" href="#/portal/signup" data-portal="signup">{{t "Subscribe"}}</a>
+                {{else}}
+                    <a class="nav-link nav-account" href="#/portal/account" data-portal="account">{{t "Account"}}</a>
+                {{/unless}}
+            {{/if}}
+        </nav>
+    </div>
+
+    {{#is "home"}}
+        {{#if @site.description}}
+            <p class="site-description">{{@site.description}}</p>
+        {{/if}}
+    {{/is}}
+</header>

@@ -1,0 +1,15 @@
+{{!< default}}
+
+<div class="post-feed">
+    {{#if posts}}
+        <ul class="post-list">
+            {{#foreach posts}}
+                {{> "post-list-item"}}
+            {{/foreach}}
+        </ul>
+    {{else}}
+        <p class="no-posts">{{t "No posts yet."}}</p>
+    {{/if}}
+
+    {{pagination}}
+</div>

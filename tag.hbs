@@ -1,0 +1,21 @@
+{{!< default}}
+
+{{#tag}}
+<div class="archive-header">
+    <h1 class="archive-title">{{name}}</h1>
+    {{#if description}}<p class="archive-description">{{description}}</p>{{/if}}
+    <p class="archive-count">{{plural ../pagination.total empty="No posts" singular="% post" plural="% posts"}}</p>
+</div>
+{{/tag}}
+
+<div class="post-feed">
+    {{#if posts}}
+        <ul class="post-list">
+            {{#foreach posts}}
+                {{> "post-list-item"}}
+            {{/foreach}}
+        </ul>
+    {{/if}}
+
+    {{pagination}}
+</div>

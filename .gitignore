@@ -1,0 +1,8 @@
+# Build artifact — distributed via GitHub Releases, not tracked in source
+*.zip
+
+# macOS
+.DS_Store
+
+# Node (if tooling is ever added)
+node_modules/

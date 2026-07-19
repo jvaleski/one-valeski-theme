@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{meta_title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="True">
+
+    {{!-- Theme styles --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}">
+
+    {{!-- Ghost outputs important meta, styles, scripts (Portal, Search, accent color) here --}}
+    {{ghost_head}}
+</head>
+
+<body class="{{body_class}}{{#if @custom.accent_links}} accent-links{{/if}}">
+    <div class="site">
+        {{> "header"}}
+
+        <main class="site-main">
+            {{{body}}}
+        </main>
+
+        {{> "footer"}}
+    </div>
+
+    {{ghost_foot}}
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+    "name": "minima",
+    "description": "A super-minimalist theme for Ghost, focused on quiet, readable long-form writing.",
+    "version": "1.0.0",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Jud Valeski",
+        "email": "jvaleski@gmail.com"
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme",
+        "minimal"
+    ],
+    "config": {
+        "posts_per_page": 25,
+        "image_sizes": {
+            "s": {
+                "width": 640
+            },
+            "m": {
+                "width": 1000
+            },
+            "l": {
+                "width": 1600
+            }
+        },
+        "card_assets": true,
+        "custom": {
+            "accent_links": {
+                "type": "boolean",
+                "default": false,
+                "description": "Color body links with your accent color instead of underlined black"
+            },
+            "signup_heading": {
+                "type": "text",
+                "description": "Heading for the footer subscribe box. Defaults to your site title when empty."
+            }
+        }
+    }
+}

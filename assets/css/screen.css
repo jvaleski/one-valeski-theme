@@ -1,0 +1,346 @@
+/* Minima — a super-minimalist Ghost theme
+   ------------------------------------------------------------------ */
+
+:root {
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+    /* Ghost injects --gh-font-heading / --gh-font-body when a custom font is
+       chosen in Design settings; otherwise fall back to the system sans stack. */
+    --font-body: var(--gh-font-body, var(--font-sans));
+    --font-heading: var(--gh-font-heading, var(--font-sans));
+
+    --color-bg: #ffffff;
+    --color-text: #1a1a1a;
+    --color-muted: #8a8a8a;
+    --color-faint: #e6e6e6;
+    --color-accent: var(--ghost-accent-color, #1a1a1a);
+
+    --content-width: 680px;
+    --gap: 24px;
+}
+
+/* Reset ------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    font-size: 18px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+::selection { background: #4a90d9; color: #fff; }
+
+/* Layout ------------------------------------------------------------ */
+.site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-main {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--gap);
+}
+
+/* Header ------------------------------------------------------------ */
+.site-header {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 48px var(--gap) 24px;
+}
+
+.site-header-inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.site-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.site-logo img { max-height: 32px; width: auto; }
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.nav { display: flex; align-items: center; gap: 18px; margin: 0; padding: 0; list-style: none; }
+.nav-item a,
+.nav-link { color: var(--color-muted); font-size: 0.9rem; transition: color 0.15s ease; }
+.nav-item a:hover,
+.nav-link:hover,
+.nav-current a { color: var(--color-text); }
+
+.nav-search {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+.nav-search:hover { color: var(--color-text); }
+
+.nav-btn {
+    font-size: 0.9rem;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: #fff;
+    transition: opacity 0.15s ease;
+}
+.nav-btn:hover { opacity: 0.82; }
+
+.site-description {
+    max-width: 46ch;
+    margin: 28px 0 0;
+    color: var(--color-muted);
+    font-size: 1.02rem;
+    line-height: 1.5;
+}
+
+/* Post list --------------------------------------------------------- */
+.post-feed { padding: 24px 0 48px; }
+
+.post-list { margin: 0; padding: 0; list-style: none; }
+
+.post-item { border-bottom: 1px solid var(--color-faint); }
+.post-item:first-child { border-top: 1px solid var(--color-faint); }
+
+.post-item-link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 0;
+}
+
+.post-item-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+}
+.post-item-link:hover .post-item-title { color: var(--color-muted); }
+
+.post-item-date {
+    flex: none;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.no-posts { color: var(--color-muted); padding: 24px 0; }
+
+/* Single post / page ------------------------------------------------ */
+.post { padding: 24px 0 48px; }
+
+.post-header { margin-bottom: 32px; }
+
+.post-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+}
+
+.post-meta {
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.post-meta-sep { color: var(--color-faint); }
+
+.post-tag {
+    display: inline-block;
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+}
+.post-tag:hover { color: var(--color-text); }
+
+.post-feature-image { margin: 0 0 40px; }
+.post-feature-image img { width: 100%; border-radius: 4px; }
+.post-feature-image figcaption {
+    margin-top: 8px;
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+.post-tags { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* Body content typography ------------------------------------------- */
+.gh-content { font-size: 1.06rem; line-height: 1.7; }
+.gh-content > * { margin-top: 0; margin-bottom: 1.4em; }
+.gh-content h1, .gh-content h2, .gh-content h3, .gh-content h4 { font-family: var(--font-heading); }
+.gh-content h2 { font-size: 1.5rem; margin-top: 1.8em; letter-spacing: -0.01em; }
+.gh-content h3 { font-size: 1.22rem; margin-top: 1.6em; }
+.gh-content a { color: var(--color-text); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--color-faint); }
+.gh-content a:hover { text-decoration-color: currentColor; }
+body.accent-links .gh-content a { color: var(--color-accent); text-decoration-color: currentColor; }
+.gh-content blockquote {
+    margin-left: 0;
+    padding-left: 20px;
+    border-left: 2px solid var(--color-faint);
+    color: var(--color-muted);
+    font-style: italic;
+}
+.gh-content pre {
+    background: #f6f6f6;
+    padding: 16px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.gh-content code { font-family: var(--font-mono); font-size: 0.88em; }
+.gh-content :not(pre) > code { background: #f6f6f6; padding: 2px 5px; border-radius: 3px; }
+.gh-content hr { border: 0; border-top: 1px solid var(--color-faint); margin: 2.4em 0; }
+.gh-content figure { margin: 2em 0; }
+.gh-content figcaption { color: var(--color-muted); font-size: 0.85rem; text-align: center; margin-top: 8px; }
+
+/* Kicker for Ghost cards */
+.kg-width-wide { max-width: 900px; margin-left: 50%; transform: translateX(-50%); }
+.kg-width-full { max-width: 100vw; margin-left: 50%; transform: translateX(-50%); }
+
+/* Subscribe CTA ----------------------------------------------------- */
+.subscribe-cta {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 56px var(--gap);
+    border-top: 1px solid var(--color-faint);
+    text-align: center;
+}
+.subscribe-cta-title { font-size: 1.4rem; font-weight: 600; margin: 0 0 8px; }
+.subscribe-cta-text { color: var(--color-muted); margin: 0 auto 24px; max-width: 46ch; }
+
+.subscribe-form {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 420px;
+    margin: 0 auto;
+}
+.subscribe-input {
+    flex: 1 1 220px;
+    padding: 10px 14px;
+    font: inherit;
+    font-size: 0.95rem;
+    border: 1px solid var(--color-faint);
+    border-radius: 6px;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+.subscribe-input:focus { outline: none; border-color: var(--color-muted); }
+.subscribe-button {
+    padding: 10px 20px;
+    font: inherit;
+    font-size: 0.95rem;
+    border: 0;
+    border-radius: 6px;
+    background: var(--color-accent);
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+.subscribe-button:hover { opacity: 0.82; }
+.subscribe-error { flex-basis: 100%; margin: 4px 0 0; color: #c0392b; font-size: 0.85rem; }
+
+/* Footer ------------------------------------------------------------ */
+.site-footer {
+    flex-shrink: 0;
+    border-top: 1px solid var(--color-faint);
+    margin-top: 24px;
+}
+.site-footer-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 28px var(--gap);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    color: var(--color-muted);
+    font-size: 0.82rem;
+}
+.footer-nav .nav { gap: 14px; }
+.footer-nav .nav-item a { font-size: 0.82rem; }
+.footer-credit a:hover { color: var(--color-text); }
+
+/* Archive header ---------------------------------------------------- */
+.archive-header { padding: 24px 0 8px; }
+.archive-title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.02em; }
+.archive-description { color: var(--color-muted); margin: 0 0 4px; }
+.archive-count { color: var(--color-muted); font-size: 0.85rem; margin: 0; }
+
+/* Pagination -------------------------------------------------------- */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 32px 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+.pagination a { color: var(--color-muted); transition: color 0.15s ease; }
+.pagination a:hover { color: var(--color-text); }
+
+/* Error ------------------------------------------------------------- */
+.error-content { text-align: center; padding: 96px var(--gap); }
+.error-code { font-size: 3rem; margin: 0 0 8px; }
+.error-message { color: var(--color-muted); margin: 0 0 24px; }
+.error-link { color: var(--color-text); }
+
+/* Responsive -------------------------------------------------------- */
+@media (max-width: 600px) {
+    html { font-size: 17px; }
+    .site-header { padding-top: 32px; }
+    .site-header-inner { align-items: center; }
+    .post-title { font-size: 1.6rem; }
+    .post-item-link { flex-direction: column; gap: 2px; }
+    .post-item-date { font-size: 0.8rem; }
+}

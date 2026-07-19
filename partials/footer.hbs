@@ -1,0 +1,25 @@
+{{#if @site.members_enabled}}
+    {{#unless @member}}
+        <section class="subscribe-cta">
+            <h2 class="subscribe-cta-title">{{#if @custom.signup_heading}}{{@custom.signup_heading}}{{else}}{{t "Subscribe to {title}" title=@site.title}}{{/if}}</h2>
+            {{#if @site.description}}
+                <p class="subscribe-cta-text">{{@site.description}}</p>
+            {{/if}}
+            <form class="subscribe-form" data-members-form>
+                <input class="subscribe-input" name="email" type="email" placeholder="{{t "you@example.com"}}" required data-members-email>
+                <button class="subscribe-button" type="submit">{{t "Subscribe"}}</button>
+                <p class="subscribe-error" data-members-error></p>
+            </form>
+        </section>
+    {{/unless}}
+{{/if}}
+
+<footer class="site-footer">
+    <div class="site-footer-inner">
+        <span class="footer-copy">&copy; {{date format="YYYY"}} {{@site.title}}</span>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            {{navigation type="secondary"}}
+        </nav>
+        <span class="footer-credit"><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></span>
+    </div>
+</footer>
